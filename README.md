@@ -1,5 +1,6 @@
 # Useful tools and commands   
-[Andreas Windisch](https://www.linkedin.com/in/andreas-windisch-physics/)
+[Andreas Windisch](https://www.linkedin.com/in/andreas-windisch-physics/)   
+
 This repo serves as a place where I collect commands that I find useful. Since I do not use those commands 
 on a daily basis, I intend to collect some of them here, so I don't have to browse the net to track them down in times of need.
 Feel free to add your personal favorite commands by opening new sections in this document. You can also find and connect with me on [LinkedIn](https://www.linkedin.com/in/andreas-windisch-physics/).    
