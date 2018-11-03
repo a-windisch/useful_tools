@@ -22,6 +22,28 @@ To rasterize the image, use:
 gs -sDEVICE=png16m -dTextAlphaBits=4 -r300 -o output.png input.pdf
 ``` 
 
+### Compressing PDFs with ghostscript
+Sometimes it is necessary to compress pdf files. This can also be done with ghost script. Note that in some cases a particular approach can lead to an increase in file size. That happend to me as well in a particular case, and I had to try various different suggestions till I found one that worked. Here is an example that worked for me:
+```{bash}
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf
+```
+The quality setting (and thus the rate of compression) in this case is controlled via the -dPDFSETTINGS switch, see [this blog post](https://blog.virtualzone.de/2012/11/how-to-reduce-pdf-file-size-in-linux.html). According to this post, the following settings are available.   
+   
+
+| Setting  | quality  |
+|:--------:|:--------:|
+|\/screen  | low      |
+|\/ebook   | moderate |
+|\/printer | good     |
+|\/prepress| high     |
+   
+
+Here is another command that increased the file size in the case where the above command was successful, but it may work in other cases.   
+
+```{bash}
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150 -sOutputFile=output.pdf input.pdf
+```
+Feel free to add your own commands here or send them per email to andreas.windisch@yahoo.com so I can add them for you, in case you prefer that.   
 
 ## ffmpeg and imagemagick
 Conversion of avi to mp4:
