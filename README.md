@@ -46,21 +46,22 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -
 Feel free to add your own commands here or send them per email to andreas.windisch@yahoo.com so I can add them for you, in case you prefer that.   
 
 ## Using (non-WiFi) HP network scanner with linux command line   
-I have a HP all-in-one network scaanner/printer (Photosmart C5100) that I use in combination with the command line tool scanimage. For the printer side I just used the webinterface of CUPS to set up the printer. In order to use the network scanner from the command line you have to set it up first.   
+I have a HP all-in-one network scanner/printer (Photosmart C5100) that I use in combination with the command line tool scanimage. For the printer side I just used the webinterface of CUPS to set up the printer. In order to use the network scanner from the command line you have to set it up first.   
 ```{bash}
-#you need to install hplip for your distribution
+#you need to install hplip for your distribution, then run:
 hp-setup
 ```
 Running this command positively identified the device on my network. Now make sure that scanimage recognizes the device.   
  
  ```{bash}
 scanimage -L
+#output:
 #device `hpaio:/net/Photosmart_C5100_series?ip=XXX.XXX.XXX.XXX' is a Hewlett-Packard Photosmart_C5100_series all-in-one
 ```
 Now you can scan directly from the command line. For example, I had to scan a nasty logbook with many pages and I intended to combine everything in a PDF afterwards. Here is what I did.   
 
 ```{bash}
-#STEP 1: scan page by page to working directory (cd into wd)
+#STEP 1: scan page by page to working directory (cd into wd first)
 scanimage --resolution 200 > page000.jpg
 scanimage --resolution 200 > page001.jpg
 ...
@@ -68,11 +69,13 @@ scanimage --resolution 200 > page110.jpg
 ```
 Now use convert to arrange all the jpgs in one PDF:   
 ```{bash}
+#STEP 2: Build PDF from jpgs
 convert *.jpg all_pages.pdf
 ``` 
-Finally compress the PDF to a reasonable size using ghost script, see also the respective PDF compression section of this document.   
+Finally compress the PDF to a reasonable size using ghost script, see also the PDF compression section of this document.   
 
 ```{bash}
+#STEP 3: compress PDF
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=all_pages_compressed.pdf all_pages.pdf
 ```
 
