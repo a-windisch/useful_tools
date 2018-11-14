@@ -58,6 +58,12 @@ scanimage -L
 #output:
 #device `hpaio:/net/Photosmart_C5100_series?ip=XXX.XXX.XXX.XXX' is a Hewlett-Packard Photosmart_C5100_series all-in-one
 ```
+Note: It could happen, that if the IP address of the scanner/printer changes over time, that you can't reach the scanner/printer on the network. In that case, just remove the device with the outdated IP address using the command   
+
+```{bash}
+hp-setup -r
+```
+
 Now you can scan directly from the command line. For example, I had to scan a nasty logbook with many pages and I intended to combine everything in a PDF afterwards. Here is what I did.   
 
 ```{bash}
