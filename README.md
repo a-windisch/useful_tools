@@ -69,7 +69,12 @@ convert animated.gif pic_%03d.png
 Merge pngs into animated gif:
 ```{bash}
 convert -delay 0.1 -loop 0 *.png animated.gif
-```
+```   
+   
+Compress a mp4 movie:
+```{bash}
+ffmpeg -i input.mp4 -vcodec h264 -acodec mp3 output.mp4
+```   
 
 
    
