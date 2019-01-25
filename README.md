@@ -120,7 +120,11 @@ Create an animated gif from a mp4 movie (with downscaling and time):
 ```{bash}   
 ffmpeg -i input.mp4 -r 25 -vf scale=512:-1 -ss 00:00:00 -to 00:00:16 output.gif
 ```
-
+   
+Convert from Matroska format to mp4:   
+```{bash}
+ffmpeg -i input.mkv -codec copy output.mp4
+```   
    
 
 
