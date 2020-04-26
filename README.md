@@ -14,6 +14,13 @@ In order to merge several PDFs into one output file, use:
 ```{bash}
 gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=output.pdf -dBATCH input1.pdf input2.pdf
 ```
+Sometimes you want to merge PDFs of different format, like landscape vs. portrait, or slightly larger slides with slightly smaller slides. 
+Here, the following command solved the problem for me, where I used pdfjoin rather than ghostscript.
+```{bash}
+pdfjoin --paper a4paper --rotateoversize false input1.pdf input2.pdf
+```
+Note that there is no need to specify an output filename, as it is chosen by the program.
+
 ### Rasterizing PDFs into PNGs using gs
 This is another useful command to rasterize large PDFs (for example, 3d-plots produced with Wolfram Mathematica) 
 into PNGs. The rasterization can be done with a very high resolution, and the resulting size of the PNGs will still be reasonably small.
