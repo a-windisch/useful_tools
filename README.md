@@ -8,7 +8,19 @@ Cheers, Andreas.
 
 
 ## PDFs and GhostScript
-Ghost Script is really nice for dealing with PDFs. Here are two applications that I frequently encounter, and both can be addressed nicely using gs.   
+### Splitting PDFs with pdftk
+Sometimes it is convenient to split up a pdf into individual pages. This can easily be achieved by using pdftk.
+```{bash}
+pdftk input.pdf burst output page_%02d.pdf
+```
+
+Alternatively, one can also isolate particular pages. For example, to extract the 4th page of a pdf one can use:
+```{bash}
+pdftk input.pdf cat 4 output output.pdf
+```
+Instead of cat 4 one can also specify several pages or ranges, like 1-4 for pages 1 through 4.
+
+Ghost Script is also really nice for dealing with PDFs. Here are two applications that I frequently encounter, and both can be addressed nicely using gs.   
 ### Merging PDFs with gs
 In order to merge several PDFs into one output file, use:
 ```{bash}
